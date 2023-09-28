@@ -77,6 +77,9 @@ namespace ISO
             requiredDataelements.Add(new DataElement { Id = "DE-049", PositionInTheMsg = 49, Name = "Transaction Currency Code", Value = "784", FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-050", PositionInTheMsg = 50, Name = "Reconciliation Currency Code", Value = "123", FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-052", PositionInTheMsg = 52, Name = "Personal Identification Number (PIN) Data", Value = PinPanBlockCalculator.Encryption(requiredDataelements), FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-053", PositionInTheMsg = 53, Name = "Security Related Control Information", Value ="000010000", FieldLengthRepresentation = LengthType.LL});
+            requiredDataelements.Add(new DataElement { Id = "DE-054", PositionInTheMsg = 54, Name = "Additional Amounts", Value = "ABC12367@*GUYG098", FieldLengthRepresentation = LengthType.LL});
+            requiredDataelements.Add(new DataElement { Id = "DE-055", PositionInTheMsg = 55, Name = "Integrated Circuit Card System Related Data", Value = "B..255", FieldLengthRepresentation = LengthType.LL });
             return TransactionMessage(requiredDataelements, RequiredMsg.BalanceInquiry);
         }
 
@@ -113,6 +116,9 @@ namespace ISO
             requiredDataelements.Add(new DataElement { Id = "DE-049", PositionInTheMsg = 49, Name = "Transaction Currency Code", Value = "784", FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-050", PositionInTheMsg = 50, Name = "Reconciliation Currency Code", Value = "123", FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-052", PositionInTheMsg = 52, Name = "Personal Identification Number (PIN) Data", Value = PinPanBlockCalculator.Encryption(requiredDataelements), FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-053", PositionInTheMsg = 53, Name = "Security Related Control Information", Value = "000010000", FieldLengthRepresentation = LengthType.LL });
+            requiredDataelements.Add(new DataElement { Id = "DE-054", PositionInTheMsg = 54, Name = "Additional Amounts", Value = "ABC12367@*GUYG098", FieldLengthRepresentation = LengthType.LL });
+            requiredDataelements.Add(new DataElement { Id = "DE-055", PositionInTheMsg = 55, Name = "Integrated Circuit Card System Related Data", Value = "B..255", FieldLengthRepresentation = LengthType.LL });
             return TransactionMessage(requiredDataelements, RequiredMsg.CashWithdrawal);
 
         }
