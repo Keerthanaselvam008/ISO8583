@@ -15,7 +15,8 @@ namespace ISO
         SignOn,
         SignOff,
         BalanceInquiry,
-        CashWithdrawal
+        CashWithdrawal,
+        Emv
     }
 
     internal class MessageFactory
@@ -36,6 +37,9 @@ namespace ISO
                     break;
                 case RequiredMsg.CashWithdrawal:
                     message = CashWithdrawal();
+                    break;
+                case RequiredMsg.Emv:
+                    EmvTags.Emv();
                     break;
                 default:
                     Console.Write("Option invalid.");
@@ -76,9 +80,9 @@ namespace ISO
             requiredDataelements.Add(new DataElement { Id = "DE-048", PositionInTheMsg = 48, Name = "keerthana", Value = "1234$^&ZXDYTFFG", FieldLengthRepresentation = LengthType.LLL });
             requiredDataelements.Add(new DataElement { Id = "DE-049", PositionInTheMsg = 49, Name = "Transaction Currency Code", Value = "784", FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-050", PositionInTheMsg = 50, Name = "Reconciliation Currency Code", Value = "123", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-052", PositionInTheMsg = 52, Name = "Personal Identification Number (PIN) Data", Value = PinPanBlockCalculator.Encryption(requiredDataelements), FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-053", PositionInTheMsg = 53, Name = "Security Related Control Information", Value ="000010000", FieldLengthRepresentation = LengthType.LL});
-            requiredDataelements.Add(new DataElement { Id = "DE-054", PositionInTheMsg = 54, Name = "Additional Amounts", Value = "ABC12367@*GUYG098", FieldLengthRepresentation = LengthType.LL});
+            requiredDataelements.Add(new DataElement { Id = "DE-052", PositionInTheMsg = 52, Name = "Personal Identification Number (PIN) Data", Value = PinTranslator.Encryption(requiredDataelements), FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-053", PositionInTheMsg = 53, Name = "Security Related Control Information", Value = "000010000", FieldLengthRepresentation = LengthType.LL });
+            requiredDataelements.Add(new DataElement { Id = "DE-054", PositionInTheMsg = 54, Name = "Additional Amounts", Value = "ABC12367@*GUYG098", FieldLengthRepresentation = LengthType.LL });
             requiredDataelements.Add(new DataElement { Id = "DE-055", PositionInTheMsg = 55, Name = "Integrated Circuit Card System Related Data", Value = "B..255", FieldLengthRepresentation = LengthType.LL });
             return TransactionMessage(requiredDataelements, RequiredMsg.BalanceInquiry);
         }
@@ -115,7 +119,7 @@ namespace ISO
             requiredDataelements.Add(new DataElement { Id = "DE-046", PositionInTheMsg = 46, Name = "Fee Amounts", Value = "701USD000100.50234.56001USD", FieldLengthRepresentation = LengthType.LLL });
             requiredDataelements.Add(new DataElement { Id = "DE-049", PositionInTheMsg = 49, Name = "Transaction Currency Code", Value = "784", FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-050", PositionInTheMsg = 50, Name = "Reconciliation Currency Code", Value = "123", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-052", PositionInTheMsg = 52, Name = "Personal Identification Number (PIN) Data", Value = PinPanBlockCalculator.Encryption(requiredDataelements), FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-052", PositionInTheMsg = 52, Name = "Personal Identification Number (PIN) Data", Value = PinTranslator.Encryption(requiredDataelements), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-053", PositionInTheMsg = 53, Name = "Security Related Control Information", Value = "000010000", FieldLengthRepresentation = LengthType.LL });
             requiredDataelements.Add(new DataElement { Id = "DE-054", PositionInTheMsg = 54, Name = "Additional Amounts", Value = "ABC12367@*GUYG098", FieldLengthRepresentation = LengthType.LL });
             requiredDataelements.Add(new DataElement { Id = "DE-055", PositionInTheMsg = 55, Name = "Integrated Circuit Card System Related Data", Value = "B..255", FieldLengthRepresentation = LengthType.LL });
@@ -160,22 +164,9 @@ namespace ISO
             List<DataElement> sortedDataElementsList = dataElements.OrderBy(x => x.PositionInTheMsg).ToList();
 
             StringBuilder Msg = new StringBuilder();
-            string pin = "", pan = "";
-
             foreach (DataElement de in sortedDataElementsList)
             {
-                if (de.Name == "PAN")
-                {
-                    string val = de.Value;
-                    // val = val.Substring(1, 16);
-                    pan = PinPanBlockCalculator.CalculatePanBlock(val);
-                    de.Value = pan;
-                }
-                if (de.Name == "Personal Identification Number (PIN) Data")
-                {
-                    pin = PinPanBlockCalculator.CalculatePinBlock(de.Value);
-                    de.Value = pin;
-                }
+
                 if (de.FieldLengthRepresentation == LengthType.Fixed)
                 {
                     Msg.Append(de.Value);
@@ -208,5 +199,6 @@ namespace ISO
         }
 
     }
-
 }
+
+

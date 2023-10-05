@@ -7,55 +7,65 @@ using System.Threading.Tasks;
 
 namespace ISO
 {
-    class PinPanBlockCalculator
+    class PinTranslator
     {
         public static string CalculatePinBlock(string pin)
         {
             string pinblock = "";
             int len = pin.Length;
-            if (len >= 10)
-            {
-                string lenn = len.ToString("X");
-                pinblock = "0" + lenn + pin;
-                pinblock = pinblock.PadRight(16, 'F');
-            }
-            else
-            {
-                pinblock = "0" + len + pin;
-                pinblock = pinblock.PadRight(16, 'F');
+            pinblock = ("0" + len.ToString("X") + pin);
+            pinblock = pinblock.PadRight(16, 'F');
 
-            }
             return pinblock;
         }
         public static string CalculatePanBlock(string track2Data)
         {
 
             // Split the track2Data by '=' to extract the portion before '='
-            string[] parts = track2Data.Split('=');
-            string panblock = parts[0].Substring(1);
-            panblock = panblock.Substring(0, panblock.Length - 1);
-            int len = panblock.Length;
-            if (len <= 12)
+
+            String clearPinBlock = string.Empty;
+            string pan = string.Empty;
+
+            var index = track2Data.IndexOf('=');
+            //Console.WriteLine(index);
+            if (index < 0)
             {
-                // If the length is less than or equal to 12, pad with '0' on the left
-                panblock = panblock.PadLeft(16, '0');
+                index = track2Data.IndexOf('D');
             }
-            else if (len >= 13)
+            if (index < 0)
             {
-                // If the length is greater than or equal to 13, take the last 12 characters and add '0000' in front
-                panblock = panblock.Substring(len - 12);
-                panblock = "0000" + panblock;
+                Console.WriteLine("Track2 not Valid");
+                return null;
             }
 
-            return panblock;
-
+            pan = track2Data.Substring(0, index);
+            //Console.WriteLine(pan);
+            pan = pan.PadRight(16, '0');
+         
+            string account = pan.Substring(0, pan.Length - 1);
+            account = account.Substring(account.Length - 12, 12);
+            if (account.Length < 12)
+            {
+                Console.WriteLine("Account must be equal to greater than 12");
+                return null;
+            }
+            else
+            {
+                clearPinBlock = account.PadLeft(16, '0');
+               
+                return clearPinBlock;
+            }
 
             // Handle invalid track2Data format
             throw new ArgumentException("Invalid track2Data format");
         }
         public static string CalculatePinPanBlock(string hexString1, string hexString2)
         {
-
+            if (hexString1.Length != hexString2.Length)
+            {
+                Console.WriteLine("Input strings must have the same length");
+                return null;
+            }
 
             char[] result = new char[hexString1.Length];
             for (int i = 0; i < hexString1.Length; i++)
@@ -67,8 +77,8 @@ namespace ISO
             }
 
             return new string(result);
-
         }
+
         public static byte[] HexStringToByteArray(string hex)
         {
             int byteCount = hex.Length / 2;
@@ -109,8 +119,8 @@ namespace ISO
         public static string Encryption(List<DataElement> requiredDataelements)
         {
             string pin = "1234";
-            string pinblock = PinPanBlockCalculator.CalculatePinBlock(pin)
-;
+            string pinblock = PinTranslator.CalculatePinBlock(pin);
+            
             string pan = "";
             foreach (DataElement dataElement in requiredDataelements)
             {
@@ -122,9 +132,10 @@ namespace ISO
             string panblock = CalculatePanBlock(pan);
             string key = "ED2307743BAFC53FA0315C89116BCABF";
             string pinpanblock = CalculatePinPanBlock(pinblock, panblock);
+        
             byte[] dataBytes = HexStringToByteArray(pinpanblock);
-            byte[] keyBytes = HexStringToByteArray(key)
-;
+            byte[] keyBytes = HexStringToByteArray(key);
+
             byte[] encryptedData = Encrypt3DES(dataBytes, keyBytes);
             string encryptedHex = ByteArrayToHexString(encryptedData);
             return encryptedHex;
