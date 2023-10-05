@@ -9,7 +9,7 @@ namespace ISO
 {
     class PinTranslator
     {
-        public static string CalculatePinBlock(string pin)
+        private static string CalculatePinBlock(string pin)
         {
             string pinblock = "";
             int len = pin.Length;
@@ -18,7 +18,7 @@ namespace ISO
 
             return pinblock;
         }
-        public static string CalculatePanBlock(string track2Data)
+        private static string CalculatePanBlock(string track2Data)
         {
 
             // Split the track2Data by '=' to extract the portion before '='
