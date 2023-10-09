@@ -310,7 +310,7 @@ class EmvTags
                 };
             }
             Tags.Add(emvTag);
-           
+
         }
         return Tags;
     }
@@ -319,7 +319,7 @@ class EmvTags
         // Find the tag with the specified tagId and return its Name property
         var tag = emvTags.Find(t => t.Id == tagId);
         return tag?.Name ?? "";
-       
+
     }
 }
 
