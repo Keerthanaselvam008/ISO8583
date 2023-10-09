@@ -13,6 +13,7 @@ namespace ISO
         LL,
         LLL
     }
+ 
     public class DataElement
     {
         public string Id { get; set; }
@@ -21,5 +22,6 @@ namespace ISO
         public string Value { get; set; }
         public LengthType FieldLength { get; set; }
         public LengthType FieldLengthRepresentation { get; set; }
+
     }
 }
