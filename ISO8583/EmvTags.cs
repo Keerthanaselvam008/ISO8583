@@ -310,7 +310,7 @@ class EmvTags
                 };
             }
             Tags.Add(emvTag);
-          
+           
         }
         return Tags;
     }
