@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ISO;
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
@@ -30,6 +31,7 @@ class EmvTags
         try
         {
             string emvData = File.ReadAllText(filePath);
+           // string emvData = "9F02060000035000009F03060000000000009F1A0206825F2A0206829A032310119C01019F37045812D32E82027C009F36027778";
             List<TLV> emvTags = new List<TLV>
             {
                 //Already having
@@ -202,7 +204,7 @@ class EmvTags
             };
 
             //List<TLV>,string Tags = ParseEMVData(emvData, emvTags);
-            (List<TLV> Tags,string tagData)= ParseEMVData(emvData, emvTags);
+            (List<TLV> Tags,string ARQCdata) = ParseEMVData(emvData, emvTags);
 
             // Print the parsed tags
             Console.WriteLine("Tags are:\n");
@@ -213,7 +215,8 @@ class EmvTags
                 Console.WriteLine($"Tag Name: {tag.Name}");
                 Console.WriteLine($"Tag Value: {tag.Value}\n");
             }
-            Console.WriteLine(tagData);
+            //Console.WriteLine(tagData);
+            Arqc.ARQC(ARQCdata);
         }
         catch (Exception ex)
         {
@@ -245,7 +248,7 @@ class EmvTags
             int a = Operation(reqTagSpec, tagId, tagLengthValue);
             index += 2;
             string tagValue = emvData.Substring(index, tagLengthValue * 2);
-            ARQCdata=ARQCdata+ tagValue;
+            ARQCdata=ARQCdata + tagValue;
             index += tagLengthValue * 2;
             TLV emvTag = new TLV() { };
             if (a == 1)
@@ -294,7 +297,6 @@ class EmvTags
                 if (reqTagSpec.TagLengthRep == TagLengthType.Variable)
                 {
                     a = 0;
-
                 }
                 else if (reqTagSpec.TagLengthRep == TagLengthType.Fixed)
                 {
@@ -304,8 +306,7 @@ class EmvTags
                     }
                 }
                 else if (reqTagSpec.TagLengthRep == TagLengthType.Min_Max)
-                {
-                     
+                {                    
                     if (tagLengthValue >= reqTagSpec.minLen && tagLengthValue <= reqTagSpec.maxLen)
                     {
                         a = 0;

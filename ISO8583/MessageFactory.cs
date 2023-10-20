@@ -54,13 +54,13 @@ namespace ISO
             List<DataElement> requiredDataelements = new List<DataElement>();
 
             requiredDataelements.Add(new DataElement { Id = "Header", PositionInTheMsg = -1, Name = "Header", Value = "ISO004000000", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-001", PositionInTheMsg = 1, Name = "MTI", Value = "1200", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-002", PositionInTheMsg = 2, Name = "PAN", Value = "5351290102107506", FieldLengthRepresentation = LengthType.LL });
-            requiredDataelements.Add(new DataElement { Id = "DE-003", PositionInTheMsg = 3, Name = "Processing Code", Value = "310000", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-004", PositionInTheMsg = 4, Name = "Transaction Amount", Value = "000000100000", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-005", PositionInTheMsg = 5, Name = "Reconciliation Amount", Value = "000000100000", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-007", PositionInTheMsg = 7, Name = "Transmission Date Time", Value = Helper.TransmissionDateTime("MMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-009", PositionInTheMsg = 9, Name = "Reconciliation Conversion Rate", Value = "00001234", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-001", PositionInTheMsg = 1,  Name = "MTI", Value = "1200", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-002", PositionInTheMsg = 2,  Name = "PAN", Value = "5351290102107506", FieldLengthRepresentation = LengthType.LL });
+            requiredDataelements.Add(new DataElement { Id = "DE-003", PositionInTheMsg = 3,  Name = "Processing Code", Value = "310000", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-004", PositionInTheMsg = 4,  Name = "Transaction Amount", Value = "000000100000", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-005", PositionInTheMsg = 5,  Name = "Reconciliation Amount", Value = "000000100000", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-007", PositionInTheMsg = 7,  Name = "Transmission Date Time", Value = Helper.TransmissionDateTime("MMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-009", PositionInTheMsg = 9,  Name = "Reconciliation Conversion Rate", Value = "00001234", FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-011", PositionInTheMsg = 11, Name = "System Trace Audit Number", Value = Helper.FetchStan(), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-012", PositionInTheMsg = 12, Name = "Local Transaction Date & Time", Value = Helper.TransmissionDateTime("yyMMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-016", PositionInTheMsg = 16, Name = "Conversion Date", Value = "0916", FieldLengthRepresentation = LengthType.Fixed });
@@ -92,13 +92,13 @@ namespace ISO
             List<DataElement> requiredDataelements = new List<DataElement>();
 
             requiredDataelements.Add(new DataElement { Id = "Header", PositionInTheMsg = -1, Name = "Header", Value = "ISO004000000", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-001", PositionInTheMsg = 1, Name = "MTI", Value = "1200", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-002", PositionInTheMsg = 2, Name = "PAN", Value = "5351290102107506", FieldLengthRepresentation = LengthType.LL });
-            requiredDataelements.Add(new DataElement { Id = "DE-003", PositionInTheMsg = 3, Name = "Processing Code", Value = "010000", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-004", PositionInTheMsg = 4, Name = "Transaction Amount", Value = "000000100000", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-005", PositionInTheMsg = 5, Name = "Reconciliation Amount", Value = "000000100000", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-007", PositionInTheMsg = 7, Name = "Transmission Date Time", Value = Helper.TransmissionDateTime("MMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-009", PositionInTheMsg = 9, Name = "Reconciliation Conversion Rate", Value = "00001234", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-001", PositionInTheMsg = 1,  Name = "MTI", Value = "1200", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-002", PositionInTheMsg = 2,  Name = "PAN", Value = "5351290102107506", FieldLengthRepresentation = LengthType.LL });
+            requiredDataelements.Add(new DataElement { Id = "DE-003", PositionInTheMsg = 3,  Name = "Processing Code", Value = "010000", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-004", PositionInTheMsg = 4,  Name = "Transaction Amount", Value = "000000100000", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-005", PositionInTheMsg = 5,  Name = "Reconciliation Amount", Value = "000000100000", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-007", PositionInTheMsg = 7,  Name = "Transmission Date Time", Value = Helper.TransmissionDateTime("MMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-009", PositionInTheMsg = 9,  Name = "Reconciliation Conversion Rate", Value = "00001234", FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-011", PositionInTheMsg = 11, Name = "System Trace Audit Number", Value = Helper.FetchStan(), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-012", PositionInTheMsg = 12, Name = "Local Transaction Date & Time", Value = Helper.TransmissionDateTime("yyMMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-016", PositionInTheMsg = 16, Name = "Conversion Date", Value = "0916", FieldLengthRepresentation = LengthType.Fixed });
@@ -132,8 +132,8 @@ namespace ISO
             List<DataElement> requiredDataelements = new List<DataElement>();
 
             requiredDataelements.Add(new DataElement { Id = "Header", PositionInTheMsg = -1, Name = "Header", Value = "ISO004000000", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-001", PositionInTheMsg = 1, Name = "MTI", Value = "1804", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-007", PositionInTheMsg = 7, Name = "Transmission Date Time", Value = Helper.TransmissionDateTime("MMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-001", PositionInTheMsg = 1,  Name = "MTI", Value = "1804", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-007", PositionInTheMsg = 7,  Name = "Transmission Date Time", Value = Helper.TransmissionDateTime("MMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-011", PositionInTheMsg = 11, Name = "System Trace Audit Number", Value = Helper.FetchStan(), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-012", PositionInTheMsg = 12, Name = "Local Transaction Date Time", Value = Helper.TransmissionDateTime("yyMMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-024", PositionInTheMsg = 24, Name = "Function Code", Value = "801", FieldLengthRepresentation = LengthType.Fixed });
@@ -148,8 +148,8 @@ namespace ISO
             List<DataElement> requiredDataelements = new List<DataElement>();
 
             requiredDataelements.Add(new DataElement { Id = "Header", PositionInTheMsg = -1, Name = "Header", Value = "ISO004000000", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-001", PositionInTheMsg = 1, Name = "MTI", Value = "1804", FieldLengthRepresentation = LengthType.Fixed });
-            requiredDataelements.Add(new DataElement { Id = "DE-007", PositionInTheMsg = 7, Name = "Transmission Date Time", Value = Helper.TransmissionDateTime("MMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-001", PositionInTheMsg = 1,  Name = "MTI", Value = "1804", FieldLengthRepresentation = LengthType.Fixed });
+            requiredDataelements.Add(new DataElement { Id = "DE-007", PositionInTheMsg = 7,  Name = "Transmission Date Time", Value = Helper.TransmissionDateTime("MMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-011", PositionInTheMsg = 11, Name = "System Trace Audit Number", Value = Helper.FetchStan(), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-012", PositionInTheMsg = 12, Name = "Local Transaction Date Time", Value = Helper.TransmissionDateTime("yyMMddhhmmss"), FieldLengthRepresentation = LengthType.Fixed });
             requiredDataelements.Add(new DataElement { Id = "DE-024", PositionInTheMsg = 24, Name = "Function Code", Value = "802", FieldLengthRepresentation = LengthType.Fixed });
