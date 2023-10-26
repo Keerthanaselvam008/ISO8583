@@ -1,4 +1,5 @@
 ﻿using ISO;
+using ISO8583;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -216,7 +217,7 @@ class EmvTags
                 Console.WriteLine($"Tag Value: {tag.Value}\n");
             }
             //Console.WriteLine(tagData);
-            Arqc.ARQC(ARQCdata);
+          
         }
         catch (Exception ex)
         {

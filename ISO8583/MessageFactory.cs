@@ -1,4 +1,5 @@
 ﻿using ISO;
+using ISO8583;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace ISO
         SignOff,
         BalanceInquiry,
         CashWithdrawal,
-        Emv
+        Emv,
+        Arqc
     }
 
     internal class MessageFactory
@@ -40,6 +42,9 @@ namespace ISO
                     break;
                 case RequiredMsg.Emv:
                     EmvTags.Emv();
+                    break;
+                case RequiredMsg.Arqc:
+                    arqc.ARQC();
                     break;
                 default:
                     Console.Write("Option invalid.");
