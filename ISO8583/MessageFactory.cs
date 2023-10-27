@@ -44,7 +44,7 @@ namespace ISO
                     EmvTags.Emv();
                     break;
                 case RequiredMsg.Arqc:
-                    arqc.ARQC();
+                    Arqc.ARQC();
                     break;
                 default:
                     Console.Write("Option invalid.");

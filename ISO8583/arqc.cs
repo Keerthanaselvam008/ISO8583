@@ -11,9 +11,9 @@ using System.Security.Cryptography;
 
 namespace ISO8583
 {
-    class arqc
+    class Arqc
     {
-        public static void ARQC()
+        public static void ARQC()   
         {
             string tlvString = "";
 
@@ -32,10 +32,6 @@ namespace ISO8583
                 new TLV { Id = "9F36", Name = "Application Transaction Counter (ATC)", Value = "000F" },
 
         };
-
-
-
-
             string mdk = "6E46FE409DF704BCA75E7FF270B65E73";
             string dki = "01";
             string track2data = ";4226810000000010=21112011557206710000?";
@@ -53,7 +49,7 @@ namespace ISO8583
             string sessionkey = Session_Key(Final_UDK);
             Console.WriteLine("The sessionkey : " + sessionkey);
             foreach (TLV tlv in arqclist)
-            {
+            { 
                 tlvString += $"{tlv.Value}";
             }
 
@@ -64,7 +60,7 @@ namespace ISO8583
 
             // Convert the tlvString into an array by splitting it on commas
             string[] tlvArray = tlvString.Split(',');
-
+          
             // Output the tlvArray
             foreach (string tlvItem in tlvArray)
             {
@@ -140,6 +136,7 @@ namespace ISO8583
             string SKB = Encrypt3DES(R2, Final_UDk);
             string Sessionkey = SKA + SKB;
             return Sessionkey;
+            
         }
         private static string DESEncrypt(string data, string key)
         {

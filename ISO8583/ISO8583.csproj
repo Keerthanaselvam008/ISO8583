@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="arqc.cs" />
+    <Compile Include="Arqc.cs" />
     <Compile Include="DataElements.cs" />
     <Compile Include="EmvTags.cs" />
     <Compile Include="Helper.cs" />
