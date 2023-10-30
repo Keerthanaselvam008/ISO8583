@@ -73,8 +73,6 @@ namespace ISO
             return result;
         }
 
-
-
         internal static BitArray PrepareBitarrayForBitMap(List<DataElement> sortedDataElementsList)
         {
             DataElement last = sortedDataElementsList[sortedDataElementsList.Count - 1];

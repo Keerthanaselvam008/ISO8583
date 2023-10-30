@@ -15,12 +15,10 @@ namespace ISO
             int len = pin.Length;
             pinblock = ("0" + len.ToString("X") + pin);
             pinblock = pinblock.PadRight(16, 'F');
-
             return pinblock;
         }
         private static string CalculatePanBlock(string track2Data)
         {
-
             // Split the track2Data by '=' to extract the portion before '='
 
             String clearPinBlock = string.Empty;
@@ -55,7 +53,6 @@ namespace ISO
                
                 return clearPinBlock;
             }
-
             // Handle invalid track2Data format
             throw new ArgumentException("Invalid track2Data format");
         }
@@ -75,7 +72,6 @@ namespace ISO
                 int xorResult = value1 ^ value2;
                 result[i] = Convert.ToChar(xorResult.ToString("X"));
             }
-
             return new string(result);
         }
 
@@ -131,8 +127,7 @@ namespace ISO
             }
             string panblock = CalculatePanBlock(pan);
             string key = "ED2307743BAFC53FA0315C89116BCABF";
-            string pinpanblock = CalculatePinPanBlock(pinblock, panblock);
-        
+            string pinpanblock = CalculatePinPanBlock(pinblock,panblock);
             byte[] dataBytes = HexStringToByteArray(pinpanblock);
             byte[] keyBytes = HexStringToByteArray(key);
 
