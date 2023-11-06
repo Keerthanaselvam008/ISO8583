@@ -29,6 +29,7 @@ class EmvTags
     public static void Emv()
     {
         string filePath = "emv_tags.txt";
+
         try
         {
             string emvData = File.ReadAllText(filePath);

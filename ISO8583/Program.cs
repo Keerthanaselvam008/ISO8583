@@ -28,7 +28,6 @@ class Programs
             {
                 Environment.Exit(0);
             }
-
         }
     }
 }

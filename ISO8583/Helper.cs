@@ -21,7 +21,6 @@ namespace ISO
         internal static string FetchStan()
         {
             STAN = STAN + 1;
-
             return STAN.ToString();
         }
 
@@ -30,7 +29,6 @@ namespace ISO
             int numBytes = (bitArray.Length + 7) / 8;
             byte[] bytes = new byte[numBytes];
             bitArray.CopyTo(bytes, 0);
-
             return BitConverter.ToString(bytes).Replace("-", "");
         }
 

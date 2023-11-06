@@ -91,7 +91,6 @@ namespace ISO
             requiredDataelements.Add(new DataElement { Id = "DE-055", PositionInTheMsg = 55, Name = "Integrated Circuit Card System Related Data", Value = "B..255", FieldLengthRepresentation = LengthType.LL });
             return TransactionMessage(requiredDataelements, RequiredMsg.BalanceInquiry);
         }
-
         private static string CashWithdrawal()
         {
             List<DataElement> requiredDataelements = new List<DataElement>();
@@ -131,7 +130,6 @@ namespace ISO
             return TransactionMessage(requiredDataelements, RequiredMsg.CashWithdrawal);
 
         }
-
         private static string SignOn()
         {
             List<DataElement> requiredDataelements = new List<DataElement>();
@@ -147,7 +145,6 @@ namespace ISO
             requiredDataelements.Add(new DataElement { Id = "DE-094", PositionInTheMsg = 94, Name = "Transaction Originator Institution ID", Value = "00000000000" });
             return TransactionMessage(requiredDataelements, RequiredMsg.SignOn);
         }
-
         private static string SignOff()
         {
             List<DataElement> requiredDataelements = new List<DataElement>();
@@ -163,7 +160,6 @@ namespace ISO
             requiredDataelements.Add(new DataElement { Id = "DE-094", PositionInTheMsg = 94, Name = "Transaction Originator Institution ID", Value = "00000000000" });
             return TransactionMessage(requiredDataelements, RequiredMsg.SignOff);
         }
-
         private static string TransactionMessage(List<DataElement> dataElements, RequiredMsg reqMsg)
         {
             List<DataElement> sortedDataElementsList = dataElements.OrderBy(x => x.PositionInTheMsg).ToList();
@@ -188,8 +184,6 @@ namespace ISO
             }
             return Msg.ToString();
         }
-
-
         private static string PrepareBitMap(List<DataElement> sortedDataElementsList, BitArray bits)
         {
             foreach (DataElement de in sortedDataElementsList)
@@ -202,7 +196,6 @@ namespace ISO
             }
             return Helper.BitArrayToHexadecimalString(bits);
         }
-
     }
 }
 

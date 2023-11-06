@@ -90,7 +90,7 @@ namespace ISO
             StringBuilder hex = new StringBuilder(bytes.Length * 2);
             foreach (byte b in bytes)
             {
-                hex.AppendFormat("{0:X2}", b);
+                hex.AppendFormat("{0:X2}",b);
             }
             return hex.ToString();
         }
@@ -130,7 +130,6 @@ namespace ISO
             string pinpanblock = CalculatePinPanBlock(pinblock,panblock);
             byte[] dataBytes = HexStringToByteArray(pinpanblock);
             byte[] keyBytes = HexStringToByteArray(key);
-
             byte[] encryptedData = Encrypt3DES(dataBytes, keyBytes);
             string encryptedHex = ByteArrayToHexString(encryptedData);
             return encryptedHex;
